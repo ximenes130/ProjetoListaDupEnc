@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1459088738 source:c:\users\luana\desktop\projeto\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1459040389 source:c:\users\luana\desktop\projeto\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+
+1459040361 source:c:\users\luana\desktop\projeto\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+
+1459040154 c:\users\luana\desktop\projeto\funcoes.h
+
