@@ -27,6 +27,7 @@ Produto* cadastra(Produto* pdt,int codigo,char nome,float valor,int qtd) //CADAS
      /*strcpy(novo->nome,novo.nome);*/
     novo->valor=valor;
     novo->qtd=qtd;
+    // lksdjlksjfhgkljsdfhgkljsdhfgkjsdhfgkjhdsfjkghsdfkjhghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
     novo->prox=pdt;
     novo->ant=NULL;
     if(pdt!=NULL)
