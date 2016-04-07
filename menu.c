@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
+char* _resposta = "";
 
-void menu_exclusao()
-{
+void menu_exclusao(){
 
 
     system("cls");
@@ -18,24 +18,8 @@ void menu_exclusao()
     printf("\n\nDigite codigo do produto :");
     scanf("%d",&codigo);
 
-    retira(novo,codigo);
+    exclui(novo,codigo);
     imprime(novo);
-
-    printf("\n\n0-Voltar");
-    printf("\n1-Sair");
-    scanf("%d",&op);
-
-    switch(op)
-    {
-
-    case 0 :
-        menu();
-        break;
-    case 1 :
-        return 0;
-        break;
-    }
-
 }
 
 void menu_listagemqtd()
@@ -51,24 +35,6 @@ void menu_listagemqtd()
 
     printf("\n\nDigite quantidade :");
     scanf("%d",&qtd);
-
-    /*FUNCAO*/////////////////////////////////////
-
-    printf("\n\n0-Voltar");
-    printf("\n1-Sair");
-    scanf("%d",&op);
-
-    switch(op)
-    {
-
-    case 0 :
-        menu();
-        break;
-    case 1 :
-        return 0;
-        break;
-    }
-
 }
 
 void menu_consultanome()
@@ -85,24 +51,6 @@ void menu_consultanome()
 
     printf("\n\nDigite o nome do produto :");
     scanf("%c",&nome);
-
-    /*FUNCAO*/////////////////////////////////////////
-
-    printf("\n\n0-Voltar");
-    printf("\n1-Sair");
-    scanf("%d",&op);
-
-    switch(op)
-    {
-
-    case 0 :
-        menu();
-        break;
-    case 1 :
-        return 0;
-        break;
-    }
-
 }
 
 void menu_consultacodigo()
@@ -139,87 +87,78 @@ void menu_consultacodigo()
 
 }
 
-void menu_cadastro()
-{
+void menu_cadastro(Produto* p){
+    Produto* novo = inicializa();
 
-    int codigo,qtd,op;
-    char nome[50];
-    float valor;
-    Produto* novo;
-    novo=inicializa();
+    //int codigo,qtd,op;
+    //char nome[50];
+    //float valor;
 
     system("cls");
 
     printf("--------CADASTRO-----------");
 
     printf("\n\nDigite codigo");
-    scanf("%d",&codigo);
+    scanf("%d",&(novo->codigo));
     printf("\nDigite nome do produto:");
-    scanf("%c",&nome);
+    fflush(stdin);
+    scanf("%s",novo->nome);
     printf("\nDigite valor do produto:");
-    scanf("%f",&valor);
+    scanf("%f",&(novo->valor));
     printf("\nDigite quantidade do produto:");
-    scanf("%d",&qtd);
+    scanf("%d",&(novo->qtd));
 
-    /*FUNCAO*/////////////////////////////////////////
+    p = cadastra(p,novo);
 
-    printf("\n\n0-Voltar");
-    printf("\n1-Sair");
-    scanf("%d",&op);
-
-    switch(op)
-    {
-
-    case 0 :
-        menu();
-        break;
-    case 1 :
-        return 0;
-        break;
-    }
-
+    _resposta = "\n\nProduto cadastrado!\n\n";
 }
 
-void menu()
+void menu(Produto* p)
 {
+    char op;
 
-    int op;
+    do{
+        system("cls");
+        printf("-------VENDAS---------\n\n");
+        printf("\n 01-Cadastro");
+        printf("\n 02-Consulta por Codigo");
+        printf("\n 03-Consulta por Nome");
+        printf("\n 04-Listagem");
+        printf("\n 05-Listagem Quantidade");
+        printf("\n 06-Alteracao");
+        printf("\n 07-Exclusao");
+        printf("\n 08-Venda\n");
+        printf("\nesc-Sair\n");
 
-    system("cls");
-    printf("-------VENDAS---------\n\n");
-    printf("\n01-Cadastro");
-    printf("\n02-Consulta por Codigo");
-    printf("\n03-Consulta por Nome");
-    printf("\n04-Listagem");
-    printf("\n05-Listagem Quantidade");
-    printf("\n06-Alteracao");
-    printf("\n07-Exclusao");
-    printf("\n08-Venda\n");
-    printf("\n0-Sair\n\n");
-    printf("\nEscolha uma opcao:");
-    scanf("%d",&op);
+        printf("\nUltimo produto cadastrado: %s\n",p->nome);
 
-    switch(op)
-    {
-    case 1:
-        menu_cadastro();
-        break;
-    case 2:
-        menu_consultacodigo();
-        break;
-    case 3:
-        menu_consultanome();
-        break;
-    case 5:
-        menu_listagemqtd();
-        break;
-    case 7:
-        menu_exclusao();
-        break;
-    case 0:
-        return 0;
-        break;
-    }
+        printf("%s",_resposta);
+
+        printf("\nEscolha uma opcao:");
+
+        fflush(stdin);
+        op = getch();
+
+        switch(op)
+        {
+        case '1':
+            menu_cadastro(p);
+            break;
+        case '2':
+            menu_consultacodigo();
+            break;
+        case '3':
+            menu_consultanome();
+            break;
+        case '5':
+            menu_listagemqtd();
+            break;
+        case '7':
+            menu_exclusao();
+            break;
+        }
+
+    }while(op != 27);
 
 
 }

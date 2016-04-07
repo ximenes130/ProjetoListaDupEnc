@@ -16,3 +16,21 @@
 
 1459040154 c:\users\luana\desktop\projeto\funcoes.h
 
+1460055493 source:c:\users\alunotgn\desktop\projetolistadupenc-master\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcoes.h"
+
+1460051843 source:c:\users\alunotgn\desktop\projetolistadupenc-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+
+1460055432 c:\users\alunotgn\desktop\projetolistadupenc-master\funcoes.h
+
+1460053254 source:c:\users\alunotgn\desktop\projetolistadupenc-master\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+

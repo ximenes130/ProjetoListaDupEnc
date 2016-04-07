@@ -4,6 +4,11 @@
 
 int main()
 {
-    menu();
+    Produto p;
+
+    inicializa(&p);
+
+    menu(&p);
+
     return 0;
 }
