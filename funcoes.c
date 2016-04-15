@@ -79,9 +79,28 @@ void printProduto(Produto* produto);
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luiz
-/// Descrição:
-/// Parametros:
-Produto* exclui(Produto* produto);
+/// Descrição: Exclui um elemento da lista.
+/// Parametros: Produto - Elemento a ser excluido da lista.
+Produto* exclui(Produto* produto){
+    Produto* aux;
+
+    if(produto->prox != NULL)
+        produto->prox->ant = produto->ant;
+    else
+        produto->ant->prox = NULL;
+
+    if(produto->ant != NULL){
+        produto->ant->prox = produto->prox;
+        aux = produto->ant;
+    }
+    else{
+        produto->prox->ant = NULL;
+        aux = produto->prox;
+    }
+
+    free(produto);
+    return aux;
+}
 
 /// Responsavel: Luiz
 /// Descrição:
