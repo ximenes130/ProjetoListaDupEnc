@@ -59,8 +59,8 @@ void printProduto(Produto* produto);
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luiz
-/// Descrição:
-/// Parametros:
+/// Descrição: Exclui um elemento da lista.
+/// Parametros: Produto - Elemento a ser excluido da lista.
 Produto* exclui(Produto* produto);
 /// Responsavel: Luiz
 /// Descrição:
