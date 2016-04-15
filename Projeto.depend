@@ -34,3 +34,21 @@
 	<stdlib.h>
 	"funcoes.h"
 
+1460728309 source:c:\users\alunotgn\downloads\projetolistadupenc-master\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcoes.h"
+
+1460724938 c:\users\alunotgn\downloads\projetolistadupenc-master\funcoes.h
+
+1460727185 source:c:\users\alunotgn\downloads\projetolistadupenc-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+
+1460728047 source:c:\users\alunotgn\downloads\projetolistadupenc-master\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"funcoes.h"
+

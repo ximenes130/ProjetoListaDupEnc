@@ -4,13 +4,23 @@
 #include "funcoes.h"
 
 Produto* inicializa(){
-    return (Produto*) malloc(sizeof(Produto));
+    return NULL;
+}
+
+Produto* instancia(){
+    Produto* p = (Produto*) malloc(sizeof(Produto));
+    p->prox = NULL;
+    p->ant  = NULL;
+
+    return p;
 }
 
 /// Responsavel: Luana
 /// Descrição:
 /// Parametros:
 Produto* cadastro(Produto* raiz, Produto* novo){
+    printf("foi: %s",novo->nome);
+
     if(raiz != NULL){
         novo->prox = raiz;
         raiz->ant  = novo;
