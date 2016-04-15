@@ -1,18 +1,3 @@
-/*
- cadastro
- consulta por código
- consulta por nome do produto
-
- listagem (de todos os produtos cadastrados)
- listagem (de todos os produtos com quantidade abaixo de um valor fornecido)
-
-
- exclusão
- alteração
- venda (imprimir o total da venda. Fazer o controle da quantidade)
-
-*/
-
 struct produto{
     int codigo;
     char* nome;
@@ -27,6 +12,10 @@ typedef struct produto Produto;
 /// Descrição: Inicializa a lista encadeada de produto
 /// Parametros: p = Endereço da lista a ser inicializada
 Produto* inicializa();
+
+/// Descrição: Inicializa a lista encadeada de produto
+/// Parametros: p = Endereço da lista a ser inicializada
+Produto* instancia();
 
 /// Responsavel: Luana
 /// Descrição:

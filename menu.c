@@ -4,7 +4,7 @@
 
 char* _resposta = "";
 
-void menu_exclusao(){
+/*void menu_exclusao(){
 
 
     system("cls");
@@ -20,7 +20,7 @@ void menu_exclusao(){
 
     exclui(novo,codigo);
     imprime(novo);
-}
+}*/
 
 void menu_listagemqtd()
 {
@@ -53,7 +53,7 @@ void menu_consultanome()
     scanf("%c",&nome);
 }
 
-void menu_consultacodigo()
+/*void menu_consultacodigo()
 {
 
 
@@ -85,20 +85,17 @@ void menu_consultacodigo()
         break;
     }
 
-}
+}*/
 
-void menu_cadastro(Produto* p){
-    Produto* novo = inicializa();
+Produto* menu_cadastro(Produto* p){
 
-    //int codigo,qtd,op;
-    //char nome[50];
-    //float valor;
+    Produto* novo = instancia();
 
-    system("cls");
+   // system("cls");
 
-    printf("--------CADASTRO-----------");
+    printf("\n--------CADASTRO-----------");
 
-    printf("\n\nDigite codigo");
+    printf("\n\nDigite codigo:");
     scanf("%d",&(novo->codigo));
     printf("\nDigite nome do produto:");
     fflush(stdin);
@@ -108,13 +105,14 @@ void menu_cadastro(Produto* p){
     printf("\nDigite quantidade do produto:");
     scanf("%d",&(novo->qtd));
 
-    p = cadastra(p,novo);
-
     _resposta = "\n\nProduto cadastrado!\n\n";
+
+     return cadastro(p,novo);
 }
 
-void menu(Produto* p)
+void menu()
 {
+    Produto* lista = inicializa();
     char op;
 
     do{
@@ -130,7 +128,7 @@ void menu(Produto* p)
         printf("\n 08-Venda\n");
         printf("\nesc-Sair\n");
 
-        printf("\nUltimo produto cadastrado: %s\n",p->nome);
+        //printf("\nUltimo produto cadastrado: %s\n",p->nome);
 
         printf("%s",_resposta);
 
@@ -142,19 +140,19 @@ void menu(Produto* p)
         switch(op)
         {
         case '1':
-            menu_cadastro(p);
+            lista = menu_cadastro(lista);
             break;
         case '2':
-            menu_consultacodigo();
+            //menu_consultacodigo();
             break;
         case '3':
-            menu_consultanome();
+            //menu_consultanome();
             break;
         case '5':
-            menu_listagemqtd();
+            //menu_listagemqtd();
             break;
         case '7':
-            menu_exclusao();
+            //menu_exclusao();
             break;
         }
 
