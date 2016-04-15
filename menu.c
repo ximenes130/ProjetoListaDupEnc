@@ -99,7 +99,7 @@ Produto* menu_cadastro(Produto* p){
     scanf("%d",&(novo->codigo));
     printf("\nDigite nome do produto:");
     fflush(stdin);
-    scanf("%s",novo->nome);
+    gets(&(novo->nome));
     printf("\nDigite valor do produto:");
     scanf("%f",&(novo->valor));
     printf("\nDigite quantidade do produto:");
