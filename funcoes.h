@@ -1,6 +1,6 @@
 struct produto{
     int codigo;
-    char* nome;
+    char nome[155];
     float valor;
     int qtd;
     struct produto* ant;
