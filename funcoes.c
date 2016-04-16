@@ -82,18 +82,20 @@ void printProduto(Produto* produto);
 /// Descrição: Exclui um elemento da lista.
 /// Parametros: Produto - Elemento a ser excluido da lista.
 Produto* exclui(Produto* produto){
-    Produto* aux;
+    Produto* aux = NULL;
+
+    if(produto == NULL)
+        return NULL;
 
     if(produto->prox != NULL)
         produto->prox->ant = produto->ant;
-    else
+    else if(produto->ant != NULL)
         produto->ant->prox = NULL;
 
     if(produto->ant != NULL){
         produto->ant->prox = produto->prox;
         aux = produto->ant;
-    }
-    else{
+    }else if(produto->prox != NULL){
         produto->prox->ant = NULL;
         aux = produto->prox;
     }
@@ -103,11 +105,47 @@ Produto* exclui(Produto* produto){
 }
 
 /// Responsavel: Luiz
-/// Descrição:
-/// Parametros:
-Produto* alterar(Produto* produto, Produto* novoProduto);
+/// Descrição: Altera valores de itens da lista de produtos
+///
+/// Parametros: Lista - Lista de produtos;
+///             novoProduto - Produto a ser alterado
+///             codigo - codigo do produto para pesquisa
+///
+/// Retorno: PRODUTO_NAO_ENCONTRADO - Produto não foi encontrado;
+///          PRODUTO_ALTERADO     - Alteração realizada com sucesso;
+///          PRODUTO_NAO_ALTERADO - Não houve alteração;
+///
+int alterar(Produto* lista, Produto* novoProduto, int codigo){
+    // TODO: Buscar por código na lista usando o codigo do novoProduto
+
+    lista->codigo = novoProduto->codigo;
+    strcpy(lista->nome, novoProduto->nome);
+    lista->qtd    = novoProduto->qtd;
+    lista->valor  = novoProduto->valor;
+
+    return PRODUTO_ALTERADO;
+}
 
 /// Responsavel: Luiz
 /// Descrição:
-/// Parametros:
-Produto* vender(Produto* produto, float novoValor);
+///
+/// Parametros: Lista - Lista de produtos;
+///             novoProduto - Produto a ser alterado;
+///             codigo - codigo do produto para pesquisa;
+///
+/// Retorno: PRODUTO_NAO_ENCONTRADO - Produto não foi encontrado;
+///          VENDA_NAO_REALIZADA    - Venda não realizada pois não ha quantidade de produtos a serem vendidos;
+///          VENDA_REALIZADA        - Alteração realizada com sucesso;
+///
+int vender(Produto* lista, int codigo){
+    // TODO: Buscar por código na lista usando o codigo do novoProduto
+    //if(não achou)
+    //     return PRODUTO_NAO_ENCONTRADO;
+
+    if(lista->qtd <= 0)
+        return VENDA_NAO_REALIZADA;
+
+    lista->qtd--;
+
+    return VENDA_REALIZADA;
+}

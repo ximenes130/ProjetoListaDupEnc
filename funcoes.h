@@ -1,3 +1,10 @@
+
+#define VENDA_REALIZADA          5;
+#define VENDA_NAO_REALIZADA      6;
+#define PRODUTO_NAO_ENCONTRADO   7;
+#define PRODUTO_NAO_ALTERADO     8;
+#define PRODUTO_ALTERADO         9;
+
 struct produto{
     int codigo;
     char nome[155];
@@ -52,10 +59,12 @@ void printProduto(Produto* produto);
 /// Parametros: Produto - Elemento a ser excluido da lista.
 Produto* exclui(Produto* produto);
 /// Responsavel: Luiz
-/// Descrição:
-/// Parametros:
-Produto* alterar(Produto* produto, Produto* novoProduto);
+/// Descrição: Altera valores de itens da lista de produtos
+/// Parametros: Lista - Lista de produtos;
+///             novoProduto - Produto a ser alterado
+///             codigo - codigo do produto para pesquisa
+int alterar(Produto* lista, Produto* novoProduto, int codigo);
 /// Responsavel: Luiz
 /// Descrição:
 /// Parametros:
-Produto* vender(Produto* produto, float novoValor);
+int vender(Produto* lista, int codigo);
