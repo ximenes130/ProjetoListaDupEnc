@@ -16,55 +16,58 @@ struct produto{
 };
 typedef struct produto Produto;
 
-/// DescriÁ„o: Inicializa a lista encadeada de produto
-/// Parametros: p = EndereÁo da lista a ser inicializada
+/// Descri√ß√£o: Inicializa a lista encadeada de produto
+/// Parametros: p = Endere√ßo da lista a ser inicializada
 Produto* inicializa();
 
-/// DescriÁ„o: Inicializa a lista encadeada de produto
-/// Parametros: p = EndereÁo da lista a ser inicializada
+/// Descri√ß√£o: Inicializa a lista encadeada de produto
+/// Parametros: p = Endere√ßo da lista a ser inicializada
 Produto* instancia();
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luana
-/// DescriÁ„o:
-/// Parametros:
+/// Descri√ß√£o:Cadastra o produto no sistema.
+/// Parametros:raiz = Endere√ßo da lista a ser inicializada; novo = Novo produto cadastrado no sistema.
 Produto* cadastro(Produto* raiz, Produto* novo);
+
 /// Responsavel: Luana
-/// DescriÁ„o:
-/// Parametros:
+/// Descri√ß√£o:Busca o produto a partir do codigo.
+/// Parametros:raiz = Endere√ßo da lista a ser inicializada; codigo = Codigo que ser√° pesquisado.
 Produto* consultaCodigo(Produto* raiz,int codigo);
+
 /// Responsavel: Luana
-/// DescriÁ„o:
-/// Parametros:
+/// Descri√ß√£o:Busca o produto a partir do nome.
+/// Parametros:raiz = Endere√ßo da lista a ser inicializada; nome = Nome que ser√° pesquisado.
 Produto* consultaNome(Produto* raiz,char* nome);
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Abel
-/// DescriÁ„o:
+/// Descri√ß√£o:
 /// Parametros:
 void listarProduto(Produto* raiz);
 /// Responsavel: Abel
-/// DescriÁ„o:
+/// Descri√ß√£o:
 /// Parametros:
 void listarProdutoCEstoque(Produto* raiz, int qtd);
 /// Responsavel: Abel
-/// DescriÁ„o:
+/// Descri√ß√£o:
 /// Parametros:
 void printProduto(Produto* produto);
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luiz
-/// DescriÁ„o: Exclui um elemento da lista.
+/// Descri√ß√£o: Exclui um elemento da lista.
 /// Parametros: Produto - Elemento a ser excluido da lista.
 Produto* exclui(Produto* produto);
 /// Responsavel: Luiz
-/// DescriÁ„o: Altera valores de itens da lista de produtos
+/// Descri√ß√£o: Altera valores de itens da lista de produtos
 /// Parametros: Lista - Lista de produtos;
 ///             novoProduto - Produto a ser alterado
 ///             codigo - codigo do produto para pesquisa
 int alterar(Produto* lista, Produto* novoProduto, int codigo);
 /// Responsavel: Luiz
-/// DescriÁ„o:
+/// Descri√ß√£o:
 /// Parametros:
 int vender(Produto* lista, int codigo);
