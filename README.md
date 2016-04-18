@@ -21,9 +21,9 @@ ____________________
 ### Funcionalidades básicas:
 
 **Luana**
-- [ ] cadastro
-- [ ] consulta por código
-- [ ] consulta por nome do produto
+- [x] cadastro
+- [x] consulta por código
+- [x] consulta por nome do produto
 
 ```
 Produto* cadastro(Produto* raiz, Produto* novo);
@@ -43,9 +43,9 @@ void printProduto(Produto* produto)
 ```
 
 **Luiz**
-- [ ] Alteração
-- [ ] venda (imprimir o total da venda. Fazer o controle da quantidade)
-- [ ] exclusão
+- [x] Alteração
+- [x] venda (imprimir o total da venda. Fazer o controle da quantidade)
+- [x] exclusão
 
 ```
 Produto* exclui(Produto* produto);
