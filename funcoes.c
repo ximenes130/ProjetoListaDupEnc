@@ -41,8 +41,6 @@ Produto* consultaCodigo(Produto* raiz,int codigo){
         if(aux->codigo == codigo)
             return aux;
     return NULL;
-
-
 }
 /// Responsavel: Luana
 /// Descrição:
@@ -52,11 +50,10 @@ Produto* consultaNome(Produto* raiz,char* nome){
     Produto* aux;
 
     for(aux=raiz;aux!=NULL;aux=aux->prox)
-    if(aux->nome==nome)
-    return aux;
+        if(strcmp(aux->nome,nome) == 0)
+            return aux;
+
     return NULL;
-
-
 }
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,11 +78,11 @@ void printProduto(Produto* produto);
 /// Responsavel: Luiz
 /// Descrição: Exclui um elemento da lista.
 /// Parametros: Produto - Elemento a ser excluido da lista.
-Produto* exclui(Produto* produto){
+void exclui(Produto* produto){
     Produto* aux = NULL;
 
     if(produto == NULL)
-        return NULL;
+        return;
 
     if(produto->prox != NULL)
         produto->prox->ant = produto->ant;
@@ -101,33 +98,39 @@ Produto* exclui(Produto* produto){
     }
 
     free(produto);
-    return aux;
 }
 
 /// Responsavel: Luiz
-/// Descrição: Altera valores de itens da lista de produtos
+/// Descrição: Altera valores de itens da lista de produtos.
 ///
-/// Parametros: Lista - Lista de produtos;
+/// Parametros: Lista       - Lista de produtos;
 ///             novoProduto - Produto a ser alterado
-///             codigo - codigo do produto para pesquisa
+///             codigo      - codigo do produto para pesquisa
 ///
 /// Retorno: PRODUTO_NAO_ENCONTRADO - Produto não foi encontrado;
-///          PRODUTO_ALTERADO     - Alteração realizada com sucesso;
-///          PRODUTO_NAO_ALTERADO - Não houve alteração;
+///          PRODUTO_ALTERADO       - Alteração realizada com sucesso;
+///          PRODUTO_NAO_ALTERADO   - Não houve alteração;
 ///
 int alterar(Produto* lista, Produto* novoProduto, int codigo){
-    // TODO: Buscar por código na lista usando o codigo do novoProduto
 
-    lista->codigo = novoProduto->codigo;
-    strcpy(lista->nome, novoProduto->nome);
-    lista->qtd    = novoProduto->qtd;
-    lista->valor  = novoProduto->valor;
+    Produto* p = consultaCodigo(lista, codigo);
+
+    if(p == NULL)
+        return PRODUTO_NAO_ENCONTRADO;
+
+    if(novoProduto == NULL)
+        return PRODUTO_NAO_ALTERADO;
+
+    p->codigo = novoProduto->codigo;
+    strcpy(p->nome, novoProduto->nome);
+    p->qtd    = novoProduto->qtd;
+    p->valor  = novoProduto->valor;
 
     return PRODUTO_ALTERADO;
 }
 
 /// Responsavel: Luiz
-/// Descrição:
+/// Descrição: Registra a venda de um produto.
 ///
 /// Parametros: Lista - Lista de produtos;
 ///             novoProduto - Produto a ser alterado;
@@ -138,14 +141,15 @@ int alterar(Produto* lista, Produto* novoProduto, int codigo){
 ///          VENDA_REALIZADA        - Alteração realizada com sucesso;
 ///
 int vender(Produto* lista, int codigo){
-    // TODO: Buscar por código na lista usando o codigo do novoProduto
-    //if(não achou)
-    //     return PRODUTO_NAO_ENCONTRADO;
+    Produto* p = consultaCodigo(lista, codigo);
+
+    if(p == NULL)
+         return PRODUTO_NAO_ENCONTRADO;
 
     if(lista->qtd <= 0)
         return VENDA_NAO_REALIZADA;
 
-    lista->qtd--;
+    p->qtd--;
 
     return VENDA_REALIZADA;
 }

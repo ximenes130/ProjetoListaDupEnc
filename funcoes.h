@@ -7,7 +7,7 @@
 
 struct produto{
     int codigo;
-    char nome[155];
+    char nome[255];
     float valor;
     int qtd;
     struct produto* ant;
@@ -16,58 +16,71 @@ struct produto{
 };
 typedef struct produto Produto;
 
-/// Descri√ß√£o: Inicializa a lista encadeada de produto
-/// Parametros: p = Endere√ßo da lista a ser inicializada
+/// DescriÁ„o: Inicializa a lista encadeada de produto
+/// Parametros: p = EndereÁo da lista a ser inicializada
 Produto* inicializa();
 
-/// Descri√ß√£o: Inicializa a lista encadeada de produto
-/// Parametros: p = Endere√ßo da lista a ser inicializada
+/// DescriÁ„o: Inicializa a lista encadeada de produto
+/// Parametros: p = EndereÁo da lista a ser inicializada
 Produto* instancia();
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luana
-/// Descri√ß√£o:Cadastra o produto no sistema.
-/// Parametros:raiz = Endere√ßo da lista a ser inicializada; novo = Novo produto cadastrado no sistema.
+/// DescriÁ„o:
+/// Parametros:
 Produto* cadastro(Produto* raiz, Produto* novo);
-
 /// Responsavel: Luana
-/// Descri√ß√£o:Busca o produto a partir do codigo.
-/// Parametros:raiz = Endere√ßo da lista a ser inicializada; codigo = Codigo que ser√° pesquisado.
+/// DescriÁ„o:
+/// Parametros:
 Produto* consultaCodigo(Produto* raiz,int codigo);
-
 /// Responsavel: Luana
-/// Descri√ß√£o:Busca o produto a partir do nome.
-/// Parametros:raiz = Endere√ßo da lista a ser inicializada; nome = Nome que ser√° pesquisado.
+/// DescriÁ„o:
+/// Parametros:
 Produto* consultaNome(Produto* raiz,char* nome);
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Abel
-/// Descri√ß√£o:
+/// DescriÁ„o:
 /// Parametros:
 void listarProduto(Produto* raiz);
 /// Responsavel: Abel
-/// Descri√ß√£o:
+/// DescriÁ„o:
 /// Parametros:
 void listarProdutoCEstoque(Produto* raiz, int qtd);
 /// Responsavel: Abel
-/// Descri√ß√£o:
+/// DescriÁ„o:
 /// Parametros:
 void printProduto(Produto* produto);
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Responsavel: Luiz
-/// Descri√ß√£o: Exclui um elemento da lista.
+/// DescriÁ„o: Exclui um elemento da lista.
 /// Parametros: Produto - Elemento a ser excluido da lista.
-Produto* exclui(Produto* produto);
+void exclui(Produto* produto);
+
 /// Responsavel: Luiz
-/// Descri√ß√£o: Altera valores de itens da lista de produtos
-/// Parametros: Lista - Lista de produtos;
+/// DescriÁ„o: Altera valores de itens da lista de produtos.
+///
+/// Parametros: Lista       - Lista de produtos;
 ///             novoProduto - Produto a ser alterado
-///             codigo - codigo do produto para pesquisa
+///             codigo      - codigo do produto para pesquisa
+///
+/// Retorno: PRODUTO_NAO_ENCONTRADO - Produto n„o foi encontrado;
+///          PRODUTO_ALTERADO       - AlteraÁ„o realizada com sucesso;
+///          PRODUTO_NAO_ALTERADO   - N„o houve alteraÁ„o;
+///
 int alterar(Produto* lista, Produto* novoProduto, int codigo);
+
 /// Responsavel: Luiz
-/// Descri√ß√£o:
-/// Parametros:
+/// DescriÁ„o: Registra a venda de um produto.
+///
+/// Parametros: Lista - Lista de produtos;
+///             novoProduto - Produto a ser alterado;
+///             codigo - codigo do produto para pesquisa;
+///
+/// Retorno: PRODUTO_NAO_ENCONTRADO - Produto n„o foi encontrado;
+///          VENDA_NAO_REALIZADA    - Venda n„o realizada pois n„o ha quantidade de produtos a serem vendidos;
+///          VENDA_REALIZADA        - AlteraÁ„o realizada com sucesso;
+///
 int vender(Produto* lista, int codigo);

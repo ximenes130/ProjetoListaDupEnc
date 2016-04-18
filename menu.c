@@ -38,55 +38,45 @@ void menu_listagemqtd()
     scanf("%d",&qtd);
 }
 
-void menu_consultanome()
-{
-
-
+void menu_consultanome(Produto* lista){
     system("cls");
 
-
-    int op;
-    char nome[50];
+    Produto* p;
+    char nome[255];
 
     printf("--------CONSULTA POR NOME-----------");
 
     printf("\n\nDigite o nome do produto :");
-    scanf("%c",&nome);
+    fflush(stdin);
+    gets(&nome);
+    printf("\nnome:   %s",nome);
+
+    p = consultaNome(lista, nome);
+
+    if(p != NULL)
+        sprintf(_resposta, "\n\nProduto Encontrado!\n    nome:   %s\n    codigo: %d",p->nome,p->codigo);
+    else
+        sprintf(_resposta, "\n\nProduto nao encontrado!");
 }
 
-/*void menu_consultacodigo()
-{
-
-
+void menu_consultacodigo(Produto* lista){
     system("cls");
 
-    Produto* novo;
-    int valor,op;
+    Produto* p;
+    int codigo;
 
     printf("--------CONSULTA POR CODIGO-----------");
 
     printf("\n\nDigite o codigo de busca :");
-    scanf("%d",&valor);
+    scanf("%d",&codigo);
 
-    busca(novo,valor);
-    imprime(novo);
+    p = consultaCodigo(lista, codigo);
 
-    printf("\n\n0-Voltar");
-    printf("\n1-Sair");
-    scanf("%d",&op);
-
-    switch(op)
-    {
-
-    case 0 :
-        menu();
-        break;
-    case 1 :
-        return 0;
-        break;
-    }
-
-}*/
+    if(p != NULL)
+        sprintf(_resposta, "\n\nProduto Encontrado!\n    nome:   %s\n    codigo: %d\n    qtd: %d",p->nome,p->codigo,p->qtd);
+    else
+        sprintf(_resposta, "\n\nProduto nao encontrado!");
+}
 
 Produto* menu_cadastro(Produto* p){
 
@@ -111,18 +101,83 @@ Produto* menu_cadastro(Produto* p){
     return cadastro(p,novo);
 }
 
-Produto* menu_exclusao(Produto* lista){
-    Produto* r = NULL;
+void menu_alterarProduto(Produto* lista){
+    system("cls");
 
-    if(lista != NULL){ // Se existe produto a ser excluido
-        sprintf(_resposta, "Produto excluido com sucesso\n    nome:   %s\n    codigo: %d",lista->nome,lista->codigo);
+    Produto* novo = instancia();
+    int codigo;
 
-        r = exclui(lista);// TODO: Utilizar sistema de busca por codigo
-    }else{
-        strcpy(_resposta, "Não houve produto para ser excluido");
+    printf("--------ALTERACAO DE PRODUTO-----------");
+
+    printf("\n\nDigite o codigo do produto:");
+    scanf("%d",&codigo);
+
+    printf("\n\nDigite o novo codigo:");
+    scanf("%d",&(novo->codigo));
+    printf("\nDigite o novo nome do produto:");
+    fflush(stdin);
+    gets(&(novo->nome));
+    printf("\nDigite o novo valor do produto:");
+    scanf("%f",&(novo->valor));
+    printf("\nDigite a novo quantidade do produto:");
+    scanf("%d",&(novo->qtd));
+
+    switch(alterar(lista,novo,codigo)){
+    case 9:
+        sprintf(_resposta, "Produto alterado com sucesso!\n    nome:   %s\n    codigo: %d",lista->nome,lista->codigo);
+        break;
+    case 8:
+        sprintf(_resposta, "Produto nao pode ser alterado!");
+        break;
+    case 7:
+        sprintf(_resposta, "Produto nao encontrado!");
+        break;
     }
+}
 
-    return r;
+void menu_excluirProduto(Produto* lista){
+    system("cls");
+
+    Produto* p;
+    int codigo;
+
+    printf("--------EXCLUSAO DE PRODUTO-----------");
+
+    printf("\n\nDigite o codigo do produto:");
+    scanf("%d",&codigo);
+
+    p = consultaCodigo(lista, codigo);
+
+    if(p != NULL){
+        sprintf(_resposta, "Produto excluido com sucesso!\n    nome:   %s\n    codigo: %d",p->nome,p->codigo);
+
+        exclui(p);
+    }else
+        sprintf(_resposta, "Produto nao encontrado!\n    codigo: %d",codigo);
+}
+
+void menu_venderProduto(Produto* lista){
+    system("cls");
+
+    Produto* p;
+    int codigo;
+
+    printf("--------VENDA DE PRODUTO-----------");
+
+    printf("\n\nDigite o codigo do produto:");
+    scanf("%d",&codigo);
+
+    switch(vender(lista, codigo)){
+        case 5:  // Realizada
+            sprintf(_resposta, "Produto vendido com sucesso!\n    codigo: %d",codigo);
+            break;
+        case 6:  // Nao realizada
+            sprintf(_resposta, "Venda nao realizada!\n    codigo: %d",codigo);
+            break;
+        case 7:  // Nao encontrada
+            sprintf(_resposta, "Produto nao encontrado!\n    codigo: %d",codigo);
+            break;
+    }
 }
 
 void menu()
@@ -165,16 +220,22 @@ void menu()
             lista = menu_cadastro(lista);
             break;
         case '2':
-            //menu_consultacodigo();
+            menu_consultacodigo(lista);
             break;
         case '3':
-            //menu_consultanome();
+            menu_consultanome(lista);
             break;
         case '5':
             //menu_listagemqtd();
             break;
+        case '6':
+            menu_alterarProduto(lista);
+            break;
         case '7':
-            lista = menu_exclusao(lista);
+            menu_excluirProduto(lista);
+            break;
+        case '8':
+            menu_venderProduto(lista);
             break;
         }
 
