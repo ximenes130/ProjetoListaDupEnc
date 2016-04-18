@@ -5,24 +5,6 @@
 
 char _resposta[155];
 
-/*void menu_exclusao(){
-
-
-    system("cls");
-
-    Produto* novo;
-
-    int codigo,op;
-
-    printf("--------EXCLUSAO-----------");
-
-    printf("\n\nDigite codigo do produto :");
-    scanf("%d",&codigo);
-
-    exclui(novo,codigo);
-    imprime(novo);
-}*/
-
 void menu_listagemqtd()
 {
 
